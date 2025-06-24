@@ -50,8 +50,9 @@ public class SecurityConfig {
                                 "/swagger-ui.html",
                                 "/graphql",
                                 "/graphiql",
-                                "/graphiql/**",   // Bunu eklemen gerekiyor!
-                                "/vendor/**"      // Eğer UI kütüphaneleri vendor altında geliyorsa
+                                "/graphiql/**",
+                                "/vendor/**",
+                                "/movies/**"
                         ).permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/api/report/homeworks").authenticated()

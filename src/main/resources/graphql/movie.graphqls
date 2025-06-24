@@ -31,4 +31,5 @@ type Query {
 
 type Mutation {
     importMovie(imdbID: String!): Movie
+    importMovieByTitleAndYear(Title: String!, Year: String!) : Movie
 }

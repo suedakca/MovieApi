@@ -1,145 +1,201 @@
 package com.sebit.movie.Model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class MovieResponse {
-    private String Title;
-    private String Year;
-    private String Rated;
-    private String Released;
-    private String Runtime;
-    private String Genre;
-    private String Director;
-    private String Writer;
-    private String Actors;
-    private String Plot;
-    private String Language;
-    private String Country;
-    private String Awards;
-    private String Poster;
-    private String Metascore;
-    private String imdbRating;
-    private String imdbVotes;
-    private String imdbID;
-    private String Type;
-    private String BoxOffice;
+
+        @JsonProperty("Title")
+        private String title;
+
+        @JsonProperty("Year")
+        private String year;
+
+        @JsonProperty("Rated")
+        private String rated;
+
+        @JsonProperty("Released")
+        private String released;
+
+        @JsonProperty("Runtime")
+        private String runtime;
+
+        @JsonProperty("Genre")
+        private String genre;
+
+        @JsonProperty("Director")
+        private String director;
+
+        @JsonProperty("Writer")
+        private String writer;
+
+        @JsonProperty("Actors")
+        private String actors;
+
+        @JsonProperty("Plot")
+        private String plot;
+
+        @JsonProperty("Language")
+        private String language;
+
+        @JsonProperty("Country")
+        private String country;
+
+        @JsonProperty("Awards")
+        private String awards;
+
+        @JsonProperty("Poster")
+        private String poster;
+
+        @JsonProperty("Metascore")
+        private String metascore;
+
+        @JsonProperty("imdbRating")
+        private String imdbRating;
+
+        @JsonProperty("imdbVotes")
+        private String imdbVotes;
+
+        @JsonProperty("imdbID")
+        private String imdbID;
+
+        @JsonProperty("Type")
+        private String type;
+
+        @JsonProperty("BoxOffice")
+        private String boxOffice;
+
+        @JsonProperty("Response")
+        private String response;  // True / False
+
+        @JsonProperty("Error")
+        private String error;  // eğer hata varsa gelir
+
+    public String getImdbID() {
+        return imdbID;
+    }
+
+    public void setImdbID(String imdbID) {
+        this.imdbID = imdbID;
+    }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public String getYear() {
-        return Year;
+        return year;
     }
 
     public void setYear(String year) {
-        Year = year;
+        this.year = year;
     }
 
     public String getRated() {
-        return Rated;
+        return rated;
     }
 
     public void setRated(String rated) {
-        Rated = rated;
+        this.rated = rated;
     }
 
     public String getReleased() {
-        return Released;
+        return released;
     }
 
     public void setReleased(String released) {
-        Released = released;
+        this.released = released;
     }
 
     public String getRuntime() {
-        return Runtime;
+        return runtime;
     }
 
     public void setRuntime(String runtime) {
-        Runtime = runtime;
+        this.runtime = runtime;
     }
 
     public String getGenre() {
-        return Genre;
+        return genre;
     }
 
     public void setGenre(String genre) {
-        Genre = genre;
+        this.genre = genre;
     }
 
     public String getDirector() {
-        return Director;
+        return director;
     }
 
     public void setDirector(String director) {
-        Director = director;
+        this.director = director;
     }
 
     public String getWriter() {
-        return Writer;
+        return writer;
     }
 
     public void setWriter(String writer) {
-        Writer = writer;
+        this.writer = writer;
     }
 
     public String getActors() {
-        return Actors;
+        return actors;
     }
 
     public void setActors(String actors) {
-        Actors = actors;
+        this.actors = actors;
     }
 
     public String getPlot() {
-        return Plot;
+        return plot;
     }
 
     public void setPlot(String plot) {
-        Plot = plot;
+        this.plot = plot;
     }
 
     public String getLanguage() {
-        return Language;
+        return language;
     }
 
     public void setLanguage(String language) {
-        Language = language;
+        this.language = language;
     }
 
     public String getCountry() {
-        return Country;
+        return country;
     }
 
     public void setCountry(String country) {
-        Country = country;
+        this.country = country;
     }
 
     public String getAwards() {
-        return Awards;
+        return awards;
     }
 
     public void setAwards(String awards) {
-        Awards = awards;
+        this.awards = awards;
     }
 
     public String getPoster() {
-        return Poster;
+        return poster;
     }
 
     public void setPoster(String poster) {
-        Poster = poster;
+        this.poster = poster;
     }
 
     public String getMetascore() {
-        return Metascore;
+        return metascore;
     }
 
     public void setMetascore(String metascore) {
-        Metascore = metascore;
+        this.metascore = metascore;
     }
 
     public String getImdbRating() {
@@ -158,27 +214,35 @@ public class MovieResponse {
         this.imdbVotes = imdbVotes;
     }
 
-    public String getImdbID() {
-        return imdbID;
-    }
-
-    public void setImdbID(String imdbID) {
-        this.imdbID = imdbID;
-    }
-
     public String getType() {
-        return Type;
+        return type;
     }
 
     public void setType(String type) {
-        Type = type;
+        this.type = type;
     }
 
     public String getBoxOffice() {
-        return BoxOffice;
+        return boxOffice;
     }
 
     public void setBoxOffice(String boxOffice) {
-        BoxOffice = boxOffice;
+        this.boxOffice = boxOffice;
+    }
+
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
 }
