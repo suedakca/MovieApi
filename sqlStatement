@@ -14,7 +14,6 @@ CREATE TABLE movie (
     language VARCHAR(255),
     country VARCHAR(255),
     awards VARCHAR(255),
-    poster_url VARCHAR(500),
     metascore VARCHAR(50),
     imdb_rating VARCHAR(10),
     imdb_votes VARCHAR(50),
@@ -31,3 +30,10 @@ CREATE TABLE movie_rating (
     value VARCHAR(50),
     movie_id INT REFERENCES movie(id) ON DELETE CASCADE
 );
+
+INSERT INTO public.movie (imdb_id,title,"year",rated,released,runtime,genre,director,writer,actors,plot,"language",country,awards,metascore,imdb_rating,imdb_votes,"type",dvd,box_office,production,website,poster) VALUES
+	 ('tt6320628','Spider-Man: Far from Home','2019','PG-13','02 Jul 2019','129 min','Action, Adventure, Comedy','Jon Watts','Chris McKenna, Erik Sommers, Stan Lee','Tom Holland, Samuel L. Jackson, Jake Gyllenhaal','Peter Parker, the beloved superhero Spider-Man, faces four destructive elemental monsters while on holiday in Europe. Soon, he receives help from Mysterio, a fellow hero with mysterious origins.','English, Italian, Czech','United States, Czech Republic, Australia, Canada, Italy','11 wins & 26 nominations total','69','7.4','598,076','movie',NULL,'$391,283,774',NULL,NULL,'https://m.media-amazon.com/images/M/MV5BMzNhNTE0NWQtN2E1Ny00NjcwLTg1YTctMGY1NmMwODJmY2NmXkEyXkFqcGc@._V1_SX300.jpg'),
+	 ('tt10872600','Spider-Man: No Way Home','2021','PG-13','17 Dec 2021','148 min','Action, Adventure, Fantasy','Jon Watts','Chris McKenna, Erik Sommers, Stan Lee','Tom Holland, Zendaya, Benedict Cumberbatch','With Spider-Man''s identity now revealed, Peter asks Doctor Strange for help. When a spell goes wrong, dangerous foes from other worlds start to appear.','English, Tagalog','United States','Nominated for 1 Oscar. 35 wins & 71 nominations total','71','8.2','958,084','movie',NULL,'$814,866,759',NULL,NULL,'https://m.media-amazon.com/images/M/MV5BMmFiZGZjMmEtMTA0Ni00MzA2LTljMTYtZGI2MGJmZWYzZTQ2XkEyXkFqcGc@._V1_SX300.jpg');
+
+
+post_rl galiba öyle bir col vardı o silinecek
