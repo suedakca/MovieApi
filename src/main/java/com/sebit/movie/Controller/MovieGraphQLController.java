@@ -36,40 +36,23 @@ public class MovieGraphQLController {
     }
 
     @MutationMapping
-    public Movie importMovie(@Argument String imdbID) {
-        String url = "https://www.omdbapi.com/?apikey="+ apiKey +"&i=" + imdbID;
-        MovieResponse omdbMovie = restTemplate.getForObject(url, MovieResponse.class);
-        if (omdbMovie == null || !"True".equalsIgnoreCase(omdbMovie.getResponse())) {
-            throw new RuntimeException("OMDb API Error: " + (omdbMovie != null ? omdbMovie.getError() : "Unknown error"));
+    public Movie importMovieAuto(
+            @Argument String imdbID,
+            @Argument String title,
+            @Argument String year,
+            @Argument String type
+    ) {
+        String url;
+        if (imdbID != null && !imdbID.isEmpty()) {
+            url = "https://www.omdbapi.com/?apikey=" + apiKey + "&i=" + imdbID;
+        } else if (title != null && year != null) {
+            url = "https://www.omdbapi.com/?apikey=" + apiKey + "&t=" + title + "&y=" + year;
+            if (type != null && !type.isEmpty()) {
+                url += "&type=" + type;
+            }
+        } else {
+            throw new IllegalArgumentException("Invalid parameters");
         }
-        Movie movie = new Movie();
-        movie.setImdbId(omdbMovie.getImdbID());
-        movie.setTitle(omdbMovie.getTitle());
-        movie.setYear(omdbMovie.getYear());
-        movie.setRated(omdbMovie.getRated());
-        movie.setReleased(omdbMovie.getReleased());
-        movie.setRuntime(omdbMovie.getRuntime());
-        movie.setGenre(omdbMovie.getGenre());
-        movie.setDirector(omdbMovie.getDirector());
-        movie.setWriter(omdbMovie.getWriter());
-        movie.setActors(omdbMovie.getActors());
-        movie.setPlot(omdbMovie.getPlot());
-        movie.setLanguage(omdbMovie.getLanguage());
-        movie.setCountry(omdbMovie.getCountry());
-        movie.setAwards(omdbMovie.getAwards());
-        movie.setPoster(omdbMovie.getPoster());
-        movie.setMetascore(omdbMovie.getMetascore());
-        movie.setImdbRating(omdbMovie.getImdbRating());
-        movie.setImdbVotes(omdbMovie.getImdbVotes());
-        movie.setType(omdbMovie.getType());
-        movie.setBoxOffice(omdbMovie.getBoxOffice());
-
-        return movieRepository.save(movie);
-    }
-
-    @MutationMapping
-    public Movie importMovieByTitleAndYear(@Argument String Title, @Argument String Year) {
-        String url = "https://www.omdbapi.com/?apikey=" + apiKey + "&t=" + Title + "&y=" + Year;
 
         MovieResponse omdbMovie = restTemplate.getForObject(url, MovieResponse.class);
 
