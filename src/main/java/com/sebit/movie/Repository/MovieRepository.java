@@ -17,8 +17,10 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
 
     List<Movie> findByTitleContainingIgnoreCase(String title);
 
-    @Query("SELECT m FROM Movie m WHERE LOWER(m.title) LIKE LOWER(CONCAT('%', :keyword, '%'))")
-    List<Movie> searchByTitleContaining(@Param("keyword") String keyword);
+    @Query("SELECT m FROM Movie m WHERE LOWER(m.title) LIKE LOWER(:keyword)")
+    List<Movie> searchByTitle(@Param("keyword") String keyword);
 
+    @Query("select m from Movie m where lower(m.title) like lower(concat('%', :title, '%')) and m.year like :year")
+    List<Movie> findByTitleContainingIgnoreCaseAndYear(String title, String year);
 
 }

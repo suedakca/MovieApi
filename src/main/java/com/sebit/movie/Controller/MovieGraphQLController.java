@@ -25,16 +25,6 @@ public class MovieGraphQLController {
         this.restTemplate = new RestTemplate();
     }
 
-    @QueryMapping
-    public List<Movie> movies() {
-        return movieRepository.findAll();
-    }
-
-    @QueryMapping
-    public Movie movieById(@Argument Long id) {
-        return movieRepository.findById(id).orElse(null);
-    }
-
     @MutationMapping
     public Movie importMovieAuto(
             @Argument String imdbID,
@@ -45,8 +35,13 @@ public class MovieGraphQLController {
         String url;
         if (imdbID != null && !imdbID.isEmpty()) {
             url = "https://www.omdbapi.com/?apikey=" + apiKey + "&i=" + imdbID;
-        } else if (title != null && year != null) {
-            url = "https://www.omdbapi.com/?apikey=" + apiKey + "&t=" + title + "&y=" + year;
+        } else if (title != null && !title.isEmpty()) {
+            url = "https://www.omdbapi.com/?apikey=" + apiKey + "&t=" + title;
+
+            if (year != null && !year.isEmpty()) {
+                url += "&y=" + year;
+            }
+
             if (type != null && !type.isEmpty()) {
                 url += "&type=" + type;
             }
@@ -54,10 +49,16 @@ public class MovieGraphQLController {
             throw new IllegalArgumentException("Invalid parameters");
         }
 
+
         MovieResponse omdbMovie = restTemplate.getForObject(url, MovieResponse.class);
 
         if (omdbMovie == null || !"True".equalsIgnoreCase(omdbMovie.getResponse())) {
             throw new RuntimeException("OMDb API Error: " + (omdbMovie != null ? omdbMovie.getError() : "Unknown error"));
+        }
+
+        List<Movie> existingMovie = movieRepository.searchByTitle(omdbMovie.getTitle());
+        if (existingMovie != null && !existingMovie.isEmpty()) {
+            return null;
         }
 
         Movie movie = new Movie();
