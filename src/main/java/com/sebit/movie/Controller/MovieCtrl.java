@@ -38,13 +38,6 @@ public class MovieCtrl {
     public ResponseEntity<ByteArrayResource> downloadMovieReport() {
         List<Movie> movies = movieRepository.findAll();
         ByteArrayResource resource = new ByteArrayResource(ExcelCreator.generateExcelReport(movies));
-        try {
-            // Widows -> C:/Users/sueda_akca/Desktop/homeworks.xlsx
-            // Mac -> /Users/suedaakca/Desktop/homeworks.xlsx
-            Files.write(Paths.get("C:/Users/sueda_akca/Desktop/movie.xlsx"), resource.getByteArray());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=movie.xlsx")
                 .contentType(MediaType.parseMediaType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"))
