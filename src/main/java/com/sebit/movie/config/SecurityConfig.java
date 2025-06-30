@@ -20,11 +20,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+                .cors(cors -> {})
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                        .requestMatchers("/api/search-movie", "/api/all").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN", "ROLE_DIRECTOR")
-                        .requestMatchers("/api/report-download").hasAnyAuthority("ROLE_DIRECTOR", "ROLE_ADMIN")
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
