@@ -19,10 +19,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@RequiredArgsConstructor
 public class MovieCtrl {
     private final MovieRepository movieRepository;
     private final MovieService movieService;
+
+    public MovieCtrl(MovieRepository movieRepository, MovieService movieService) {
+        this.movieRepository = movieRepository;
+        this.movieService = movieService;
+    }
     @GetMapping("/all")
     public List<Movie> getAllMovies() {
         return movieRepository.findAll();

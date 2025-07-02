@@ -9,11 +9,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-@RequiredArgsConstructor
 public class MovieService {
 
     private final MovieRepository movieRepository;
     private final MovieGraphQLController omdbApiClient;
+
+    public MovieService(MovieRepository movieRepository, MovieGraphQLController omdbApiClient) {
+        this.movieRepository = movieRepository;
+        this.omdbApiClient = omdbApiClient;
+    }
 
     public List<Movie> searchAndSaveMovies(MovieRequest request) {
         Movie importedMovie = omdbApiClient.importMovieAuto(
