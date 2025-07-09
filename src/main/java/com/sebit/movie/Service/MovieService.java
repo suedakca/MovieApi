@@ -4,7 +4,6 @@ import com.sebit.movie.Controller.MovieGraphQLController;
 import com.sebit.movie.Entity.Movie;
 import com.sebit.movie.Model.MovieRequest;
 import com.sebit.movie.Repository.MovieRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

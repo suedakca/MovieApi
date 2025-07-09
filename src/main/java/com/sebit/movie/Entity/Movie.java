@@ -13,7 +13,7 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonProperty("imdbID")  // OMDb API'den gelen JSON'daki "imdbID" alanını buna eşle
+    @JsonProperty("imdbID")
     @Size(max = 20)
     @NotNull
     @Column(name = "imdb_id", nullable = false, length = 20, unique = true)

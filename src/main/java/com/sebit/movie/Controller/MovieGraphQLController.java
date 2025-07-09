@@ -4,11 +4,9 @@ import com.sebit.movie.Entity.Movie;
 import com.sebit.movie.Model.MovieResponse;
 import com.sebit.movie.Repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;

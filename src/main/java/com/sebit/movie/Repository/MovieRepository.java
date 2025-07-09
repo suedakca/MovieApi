@@ -11,10 +11,6 @@ import java.util.List;
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Long> {
 
-    List<Movie> findByDirectorContainingIgnoreCase(String director);
-
-    List<Movie> findByYear(String year);
-
     List<Movie> findByTitleContainingIgnoreCase(String title);
 
     @Query("SELECT m FROM Movie m WHERE LOWER(m.title) LIKE LOWER(:keyword)")
